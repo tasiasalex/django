@@ -115,3 +115,20 @@ class AuthorDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context["author_posts"] = self.object.posts.all() 
         return context
+
+class TagListView(ListView):
+    template_name = "blog/tags-list.html"
+    model = Tag
+    context_object_name = "tags"
+
+class TagDetailView(DetailView):
+    template_name = "blog/tag-detail.html"
+    model = Tag
+    context_object_name = "tag"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Com que no hi ha related_name al model Post per a 'tags',
+        # Django crea automàticament la relació inversa amb '_set'
+        context["tag_posts"] = self.object.post_set.all()
+        return context

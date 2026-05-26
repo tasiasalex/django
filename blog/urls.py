@@ -20,4 +20,9 @@ urlpatterns = [
     path("authors", views.AuthorListView.as_view(), name="authors-page"),
     
     path("authors/<int:pk>", views.AuthorDetailView.as_view(), name="author-detail-page"),
+    
+    path("tags", views.TagListView.as_view(), name="tags-page"),
+    
+    # Detall d'un tag concret per ID ensenyant els seus posts
+    path("tags/<int:pk>", views.TagDetailView.as_view(), name="tag-detail-page"),
 ]
