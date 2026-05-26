@@ -1,21 +1,29 @@
+{# Heretem l'estructura base per mantenir la coherència visual del blog #}
 {% extends "blog/base.html" %}
 {% load static %}
 
+{# Títol específic per a la secció de favorits o lectura pendent #}
 {% block title %}Els meus posts guardats{% endblock %}
 
 {% block css_files %}
+  {# Reutilitzem els estils de la llista general de posts per mantenir el disseny de la graella #}
   <link rel="stylesheet" href="{% static 'blog/all-posts.css' %}">
   <link rel="stylesheet" href="{% static 'blog/base.css' %}">
 {% endblock %}
 
 {% block content %}
-<section id="all-posts"> <h1>Els meus posts guardats</h1>
+<section id="all-posts">
+    <h1>Els meus posts guardats</h1>
     
+    {# Lògica condicional: comprovem si la sessió conté algun post guardat #}
     {% if not has_posts %}
+        {# Missatge que es mostra quan la llista de la sessió està buida #}
         <p>No has guardat cap post encara.</p>
     {% else %}
+        {# Si hi ha posts, els pintem fent servir la graella flexbox/grid definida al CSS #}
         <ul>
             {% for post in posts %}
+                {# Tornem a fer servir l'include per reutilitzar el component de la targeta (DRY) #}
                 {% include "blog/post-item.html" %}
             {% endfor %}
         </ul>
