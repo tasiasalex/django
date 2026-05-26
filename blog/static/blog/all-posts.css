@@ -1,10 +1,12 @@
 /* --- CONTENIDOR PRINCIPAL --- */
+/* Limitem l'amplada màxima i centrem el contingut per a pantalles grans */
 #all-posts {
     max-width: 1200px;
     margin: 0 auto;
     padding: 3rem 1rem;
 }
 
+/* Títol de la secció amb un efecte "neon" que lliga amb l'estètica RPG */
 #all-posts h2 {
     text-align: center;
     font-size: 2.8rem;
@@ -16,6 +18,7 @@
 }
 
 /* --- NAVEGACIÓ DE FILTRES (CATEGORIES) --- */
+/* Zona de botons per filtrar posts, amb un fons semi-transparent */
 #filter-navigation {
     margin-bottom: 4rem;
     text-align: center;
@@ -37,9 +40,10 @@
     display: flex;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Perquè els botons baixin si no caben en una línia */
 }
 
+/* Estil dels botons de filtre amb una transició suau (cubic-bezier) */
 .filter-btn {
     text-decoration: none;
     color: #00d4ff;
@@ -59,6 +63,7 @@
 }
 
 /* --- LA GRAELLA DE POSTS (FILA DE 3) --- */
+/* Fem servir Flexbox per crear la disposició de targetes */
 #all-posts ul {
     list-style: none;
     margin: 0;
@@ -69,32 +74,34 @@
     justify-content: flex-start;
 }
 
+/* Calculem l'amplada per tenir exactament 3 columnes comptant el gap */
 #all-posts li {
-    width: calc(33.333% - 24px); /* Perfectament alineat a 3 columnes */
+    width: calc(33.333% - 24px); 
     min-width: 320px;
     display: flex;
 }
 
 /* --- ESTIL DE LA TARGETA (POST CARD) --- */
+/* Contenidor principal de cada post amb efectes de transició al fer hover */
 .post {
     background: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 15px;
-    overflow: hidden;
+    overflow: hidden; /* Important perquè la imatge no surti dels cantons arrodonits */
     transition: all 0.3s ease;
     width: 100%;
     display: flex;
     flex-direction: column;
-    text-decoration: none; /* Treu el blau dels enllaços */
+    text-decoration: none; 
 }
 
 .post:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* Efecte d'elevació */
     border-color: #00d4ff;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-/* Contingut de la targeta */
+/* Espaiat intern del text de la targeta */
 .post__content {
     padding: 1.5rem;
     display: flex;
@@ -138,6 +145,7 @@
 }
 
 /* --- IMATGE --- */
+/* Assegurem que totes les imatges tinguin la mateixa proporció sense deformar-se */
 .post__image img {
     width: 100%;
     height: 220px;
@@ -146,15 +154,17 @@
 }
 
 /* --- RESPONSIVE --- */
+/* Quan la pantalla es fa petita, passem a 2 columnes */
 @media (max-width: 1100px) {
     #all-posts li {
-        width: calc(50% - 18px); /* 2 per fila */
+        width: calc(50% - 18px); 
     }
 }
 
+/* En mòbils, cada post ocupa tota l'amplada (1 columna) */
 @media (max-width: 750px) {
     #all-posts li {
-        width: 100%; /* 1 per fila en mòbils */
+        width: 100%; 
     }
     #all-posts h2 {
         font-size: 2rem;
