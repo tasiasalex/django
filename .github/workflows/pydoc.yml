@@ -1,41 +1,40 @@
-name: Pydoc Auto-Generator # Nom del procés que sortirà a la pestanya Actions
-on: [push] # S'executa cada vegada que fas un 'push' de codi
+name: Pydoc Auto-Generator # Nom del procés
+on: [push] # S'executa en fer push
 
 permissions:
-  contents: write # Permís per poder crear els fitxers de la documentació al repo
+  contents: write # Permís per escriure la documentació al repo
 
 jobs:
   build:
-    runs-on: ubuntu-latest # Utilitza un ordinador virtual amb Linux
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout codi
-        uses: actions/checkout@v3 # Copia el teu codi al servidor de GitHub
+        uses: actions/checkout@v3
 
       - name: Configurar Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.12' # Instal·la la versió de Python que necessites
+          python-version: '3.12'
 
       - name: Instal·lar Django
-        run: pip install django # Instal·la Django perquè Pydoc pugui llegir el teu codi
+        run: pip install django # Instal·lem Django al servidor virtual
 
       - name: Generar Pydoc
         run: |
-          mkdir -p docs # Crea la carpeta per guardar la documentació
-          export PYTHONPATH=$PYTHONPATH:. # Indica a Python on és la teva carpeta del projecte
-          export DJANGO_SETTINGS_MODULE=my_site.settings # Configura el fitxer de settings de Django
+          mkdir -p docs
+          # Configurem les variables d'entorn necessàries
+          export PYTHONPATH=$PYTHONPATH:.
+          export DJANGO_SETTINGS_MODULE=my_site.settings
           
-          # ARREGLA L'ERROR 'Apps aren't loaded yet': Inicialitza Django abans de Pydoc
-          python -c "import django; django.setup()" 
+          # AQUESTA LÍNIA ÉS LA CLAU:
+          # Forcem a Django a carregar-se abans de cridar a Pydoc
+          python -c "import django; django.setup(); import pydoc; pydoc.writedoc('blog.models'); pydoc.writedoc('blog.views')"
           
-          # Genera els fitxers HTML de la documentació de models i vistes
-          python -m pydoc -w blog.models blog.views
-          
-          # Mou els fitxers generats a la carpeta docs
+          # Movem els fitxers HTML generats a la carpeta docs
           mv *.html docs/
 
       - name: Deploy a GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3 # Publica la carpeta docs a internet (GitHub Pages)
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
