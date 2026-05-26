@@ -106,7 +106,6 @@ class AuthorListView(ListView):
     model = Author
     context_object_name = "authors"
 
-# També necessitaràs aquesta per al detall
 class AuthorDetailView(DetailView):
     template_name = "blog/author-detail.html"
     model = Author
@@ -114,5 +113,5 @@ class AuthorDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["author_posts"] = self.object.post_set.all()
+        context["author_posts"] = self.object.posts.all() 
         return context
