@@ -1,43 +1,47 @@
 /* Secció de Benvinguda */
+/* Un bloc centrat per saludar l'usuari amb un fons una mica transparent */
 #welcome {
     text-align: center;
     margin: 2rem auto;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.05); /* Efecte vidre */
+    background: rgba(255, 255, 255, 0.05); /* Efecte tipus vidre (glassmorphism) */
     border-radius: 15px;
     width: 80%;
 }
 
+/* La imatge de perfil: la fem totalment rodona amb el border-radius al 50% */
 #welcome img {
     width: 150px;
     height: 150px;
-    object-fit: cover;
+    object-fit: cover; /* Perquè la foto no es deformi en fer-la rodona */
     border-radius: 50%;
-    border: 3px solid #00d4ff; /* Marquet brillant */
+    border: 3px solid #00d4ff; /* Marc blau brillant per seguir l'estètica del blog */
     box-shadow: 0 0 15px #00d4ff;
 }
 
-/* Llista de Posts */
+/* Llista de Posts (Graella de la pàgina principal) */
 #latest-posts ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Si no caben, que baixin a la següent línia */
 }
 
+/* Estil de cada targeta de post individual */
 .post {
     background: rgba(20, 20, 30, 0.8);
     border: 1px solid rgba(0, 212, 255, 0.2);
     border-radius: 10px;
-    width: 300px; /* Tornem a la mida de card estàndard */
-    overflow: hidden;
+    width: 300px; 
+    overflow: hidden; /* Perquè la imatge no surti de les cantonades arrodonides */
     transition: 0.3s;
 }
 
+/* Animació suau quan l'usuari passa el ratolí per sobre */
 .post:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Puja una mica cap amunt */
     border-color: #00d4ff;
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
