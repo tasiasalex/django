@@ -1,3 +1,4 @@
+{# Carreguem la configuració de fitxers estàtics de Django per poder fer servir el CSS #}
 {% load static %}
 
 <!DOCTYPE html>
@@ -5,27 +6,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {# Bloc per personalitzar el títol de la pestanya a cada pàgina filla #}
     <title>{% block title %}Àlex Blog{% endblock %}</title>
     
+    {# Estils globals que s'aplicaran a tot el lloc web (navbar, colors de fons, etc.) #}
     <link rel="stylesheet" href="{% static 'base.css' %}">
     
+    {# Bloc buit per permetre que les pàgines filles afegeixin els seus propis fitxers CSS #}
     {% block css_files %}{% endblock %}
 </head>
 <body>
+    {# Barra de navegació global: es mantindrà fixa a totes les seccions del blog #}
     <header id="main-navigation">
         <div class="logo">
+            {# Enllaç dinàmic cap a la pàgina d'inici fent servir el name de la URL #}
             <a href="{% url 'starting-page' %}">ÀLEX<span>BLOG</span></a>
         </div>
         <nav>
             <ul>
                 <li><a href="{% url 'starting-page' %}">Inici</a></li>
                 <li><a href="{% url 'posts-page' %}">Tots els Posts</a></li>
+                {# Enllaç a la secció de posts guardats mitjançant sessions #}
                 <li><a href="{% url 'read-later' %}">Llegir més tard</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        {# El bloc més important: aquí és on s'injectarà el contingut específic de cada pàgina #}
         {% block content %}{% endblock %}
     </main>
 </body>
