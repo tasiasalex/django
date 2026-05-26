@@ -1,15 +1,19 @@
+{# Estenem el template base per mantenir la navegació i l'estructura comuna #}
 {% extends "blog/base.html" %}
 {% load static %}
 
+{# Definim el títol específic per a la pàgina d'inici #}
 {% block title %}El meu Blog de Django{% endblock %}
 
 {% block css_files %}
+  {# Fitxer CSS propi per a la disposició dels elements de la home #}
   <link rel="stylesheet" href="{% static 'blog/index.css' %}">
 {% endblock %}
 
 {% block content %}
 <section id="welcome">
     <header>
+        {# Imatge estàtica de perfil carregada des de la carpeta static #}
         <img src="{% static 'blog/images/perfil.jpg' %}" alt="La meva foto de perfil">
         <h2>Benvingut al meu blog</h2>
     </header>
@@ -19,13 +23,18 @@
 <section id="latest-posts">
     <h2>Els meus últims posts</h2>
     <ul>
+        {# Bucle 'for' de Django per recórrer els posts que ens envia la vista (starting_page) #}
         {% for post in posts %}
             <li>
                 <article class="post">
+                    {# Enllacem cada targeta al detall del post fent servir el seu 'slug' únic #}
                     <a href="{% url 'post-detail-page' post.slug %}">
+                        {# Combinem el camí estàtic amb el nom de la imatge que ve del model Post #}
                         <img src="{% static 'blog/images/' %}{{ post.image_name }}" alt="{{ post.title }}">
+                        
                         <div class="post__content">
                             <h3>{{ post.title }}</h3>
+                            {# L'excerpt és un resum curt del post definit al model #}
                             <p>{{ post.excerpt }}</p>
                         </div>
                     </a>
