@@ -16,4 +16,8 @@ urlpatterns = [
     
     # La vista per als posts guardats per llegir més tard (feta amb una classe)
     path("read-later", views.ReadLaterView.as_view(), name="read-later"),
+    
+    path("authors", views.AuthorListView.as_view(), name="authors-page"),
+    
+    path("authors/<int:pk>", views.AuthorDetailView.as_view(), name="author-detail-page"),
 ]
