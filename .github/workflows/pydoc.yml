@@ -1,37 +1,41 @@
 name: Pydoc Auto-Generator # Nom del procés que sortirà a la pestanya Actions
-on: [push] # S'executa automàticament cada vegada que fem un 'git push'
+on: [push] # S'executa cada vegada que fas un 'push' de codi
 
 permissions:
-  contents: write # Donem permís a GitHub per crear i guardar els fitxers HTML al repo
+  contents: write # Permís per poder crear els fitxers de la documentació al repo
 
 jobs:
   build:
-    runs-on: ubuntu-latest # Utilitzem un servidor virtual de Linux (Ubuntu)
+    runs-on: ubuntu-latest # Utilitza un ordinador virtual amb Linux
     steps:
       - name: Checkout codi
-        uses: actions/checkout@v3 # Pas 1: Copiem el nostre codi de Django al servidor virtual
+        uses: actions/checkout@v3 # Copia el teu codi al servidor de GitHub
 
       - name: Configurar Python
-        uses: actions/setup-python@v3 # Pas 2: Instal·lem Python al servidor
+        uses: actions/setup-python@v3
         with:
-          python-version: '3.12'
+          python-version: '3.12' # Instal·la la versió de Python que necessites
 
       - name: Instal·lar Django
-        run: pip install django # Pas 3: Instal·lem Django perquè Pydoc pugui llegir els models sense errors
+        run: pip install django # Instal·la Django perquè Pydoc pugui llegir el teu codi
 
       - name: Generar Pydoc
         run: |
-          mkdir -p docs # Creem una carpeta anomenada 'docs' per guardar la web
-          export PYTHONPATH=$PYTHONPATH:. # Diem a Python que busqui el codi a la carpeta actual
-          export DJANGO_SETTINGS_MODULE=my_site.settings # Configurem el path dels settings del projecte
+          mkdir -p docs # Crea la carpeta per guardar la documentació
+          export PYTHONPATH=$PYTHONPATH:. # Indica a Python on és la teva carpeta del projecte
+          export DJANGO_SETTINGS_MODULE=my_site.settings # Configura el fitxer de settings de Django
           
-          # Generem la documentació en HTML dels fitxers models.py i views.py de la nostra app 'blog'
+          # ARREGLA L'ERROR 'Apps aren't loaded yet': Inicialitza Django abans de Pydoc
+          python -c "import django; django.setup()" 
+          
+          # Genera els fitxers HTML de la documentació de models i vistes
           python -m pydoc -w blog.models blog.views
           
-          mv *.html docs/ # Movem els fitxers HTML generats a la carpeta docs per publicar-los
+          # Mou els fitxers generats a la carpeta docs
+          mv *.html docs/
 
       - name: Deploy a GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3 # Pas 4: Publiquem el contingut de 'docs' a GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3 # Publica la carpeta docs a internet (GitHub Pages)
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir:
+          publish_dir: ./docs
