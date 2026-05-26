@@ -1,40 +1,38 @@
-name: Pydoc Auto-Generator # Nom del procés
-on: [push] # S'executa en fer push
+name: Pydoc Auto-Generator
+on: [push] # Això fa que s'executi sol cada cop que faig un push al repo
 
 permissions:
-  contents: write # Permís per escriure la documentació al repo
+  contents: write # Important per poder guardar els HTML que es generin
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Utilitzo una màquina virtual amb Linux per fer la feina
     steps:
       - name: Checkout codi
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 # Copio els meus fitxers de Django al servidor de GitHub
 
       - name: Configurar Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.12'
+          python-version: '3.12' # Instal·lo el Python que estic fent servir al curs
 
       - name: Instal·lar Django
-        run: pip install django # Instal·lem Django al servidor virtual
+        run: pip install django # Instal·lo Django perquè el Pydoc pugui llegir els models
 
       - name: Generar Pydoc
         run: |
-          mkdir -p docs
-          # Configurem les variables d'entorn necessàries
-          export PYTHONPATH=$PYTHONPATH:.
-          export DJANGO_SETTINGS_MODULE=my_site.settings
+          mkdir -p docs # Creo la carpeta on aniran les webs de documentació
+          export PYTHONPATH=$PYTHONPATH:. # Afegeixo la ruta actual al path de Python
+          export DJANGO_SETTINGS_MODULE=my_site.settings # Li dic on estan els settings del meu projecte
           
-          # AQUESTA LÍNIA ÉS LA CLAU:
-          # Forcem a Django a carregar-se abans de cridar a Pydoc
+          # Aquesta línia és vital: inicialitzo Django i després crido al pydoc
+          # Ho faig així perquè no em doni l'error d'AppRegistryNotReady
           python -c "import django; django.setup(); import pydoc; pydoc.writedoc('blog.models'); pydoc.writedoc('blog.views')"
           
-          # Movem els fitxers HTML generats a la carpeta docs
-          mv *.html docs/
+          mv *.html docs/ # Mou els fitxers que ha creat el pydoc a la carpeta docs
 
       - name: Deploy a GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v3 # Això publica la carpeta 'docs' a la web
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
