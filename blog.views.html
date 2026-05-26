@@ -32,7 +32,7 @@
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#ReadLaterView">ReadLaterView</a>(**kwargs)<br>
 &nbsp;<br>
-<br>&nbsp;</span></td></tr>
+#&nbsp;Faig&nbsp;servir&nbsp;una&nbsp;classe&nbsp;per&nbsp;gestionar&nbsp;la&nbsp;llista&nbsp;de&nbsp;"Llegir&nbsp;més&nbsp;tard"&nbsp;amb&nbsp;sessions<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="blog.views.html#ReadLaterView">ReadLaterView</a></dd>
@@ -41,9 +41,9 @@
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="ReadLaterView-get"><strong>get</strong></a>(self, request)</dt></dl>
+<dl><dt><a name="ReadLaterView-get"><strong>get</strong></a>(self, request)</dt><dd><span class="code">#&nbsp;Mostra&nbsp;la&nbsp;llista&nbsp;de&nbsp;posts&nbsp;guardats</span></dd></dl>
 
-<dl><dt><a name="ReadLaterView-post"><strong>post</strong></a>(self, request)</dt></dl>
+<dl><dt><a name="ReadLaterView-post"><strong>post</strong></a>(self, request)</dt><dd><span class="code">#&nbsp;Afegeix&nbsp;o&nbsp;treu&nbsp;un&nbsp;post&nbsp;de&nbsp;la&nbsp;llista&nbsp;(botó&nbsp;de&nbsp;guardar/eliminar)</span></dd></dl>
 
 <hr>
 Methods inherited from <a href="django.views.generic.base.html#View">django.views.generic.base.View</a>:<br>
@@ -82,9 +82,9 @@ Data and other attributes inherited from <a href="django.views.generic.base.html
 <td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
     
 <tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
-<td class="singlecolumn"><dl><dt><a name="-post_detail"><strong>post_detail</strong></a>(request, slug)</dt></dl>
- <dl><dt><a name="-posts"><strong>posts</strong></a>(request)</dt></dl>
- <dl><dt><a name="-posts_by_tag"><strong>posts_by_tag</strong></a>(request, tag_slug)</dt></dl>
- <dl><dt><a name="-starting_page"><strong>starting_page</strong></a>(request)</dt></dl>
+<td class="singlecolumn"><dl><dt><a name="-post_detail"><strong>post_detail</strong></a>(request, slug)</dt><dd><span class="code">#&nbsp;Vista&nbsp;detallada&nbsp;d'un&nbsp;post.&nbsp;Gestiona&nbsp;també&nbsp;el&nbsp;formulari&nbsp;de&nbsp;comentaris.</span></dd></dl>
+ <dl><dt><a name="-posts"><strong>posts</strong></a>(request)</dt><dd><span class="code">#&nbsp;Llista&nbsp;completa&nbsp;de&nbsp;posts,&nbsp;ordenats&nbsp;per&nbsp;data&nbsp;(els&nbsp;nous&nbsp;primer)</span></dd></dl>
+ <dl><dt><a name="-posts_by_tag"><strong>posts_by_tag</strong></a>(request, tag_slug)</dt><dd><span class="code">#&nbsp;Filtre&nbsp;de&nbsp;posts&nbsp;per&nbsp;etiqueta&nbsp;(tag)</span></dd></dl>
+ <dl><dt><a name="-starting_page"><strong>starting_page</strong></a>(request)</dt><dd><span class="code">#&nbsp;Pàgina&nbsp;d'inici:&nbsp;només&nbsp;vull&nbsp;ensenyar&nbsp;els&nbsp;3&nbsp;posts&nbsp;més&nbsp;nous</span></dd></dl>
 </td></tr></table>
 </body></html>
