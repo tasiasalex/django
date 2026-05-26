@@ -1,0 +1,53 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}
+  Tots els meus posts
+{% endblock %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'blog/all-posts.css' %}">
+  <link rel="stylesheet" href="{% static 'blog/post-item.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="all-posts">
+  <h2>
+    {% if tag_name %}
+      Posts sobre: {{ tag_name }}
+    {% else %}
+      Tots els meus posts
+    {% endif %}
+  </h2>
+
+  <nav id="filter-navigation">
+    <p>Filtra per categoria:</p>
+    <div class="filter-tags">
+      <a href="{% url 'posts-page' %}" class="filter-btn {% if not tag_name %}active{% endif %}">
+        Tots
+      </a>
+      
+      {% for tag in all_tags %}
+        <a href="{% url 'posts-by-tag' tag.caption %}" 
+           class="filter-btn {% if tag.caption == tag_name %}active{% endif %}">
+          {{ tag.caption }}
+        </a>
+      {% endfor %}
+    </div>
+  </nav>
+
+  <hr>
+
+  <ul>
+    {% for post in all_posts %}
+      {% include "blog/post-item.html" %}
+    {% empty %}
+      <p>No s'ha trobat cap post amb aquesta etiqueta.</p>
+    {% endfor %}
+  </ul>
+</section>
+
+<div class="back-home">
+    <a href="{% url 'starting-page' %}">Torna a l'inici</a>
+</div>
+{% endblock %}

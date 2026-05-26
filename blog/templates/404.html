@@ -1,0 +1,50 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}Pàgina no trobada{% endblock %}
+
+{% block css_files %}
+<style>
+    .error-container {
+        text-align: center;
+        padding: 5rem 1rem;
+        color: white;
+    }
+    .error-container h1 {
+        font-size: 8rem;
+        margin: 0;
+        color: #00d4ff;
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+    }
+    .error-container h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .error-btn {
+        display: inline-block;
+        text-decoration: none;
+        background: transparent;
+        color: #00d4ff;
+        border: 2px solid #00d4ff;
+        padding: 1rem 2rem;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+    .error-btn:hover {
+        background: #00d4ff;
+        color: #121212;
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="error-container">
+    <h1>404</h1>
+    <h2>Ups! Aquest post s'ha perdut en el codi...</h2>
+    <p>La pàgina que busques no existeix o ha estat moguda.</p>
+    <br><br>
+    <a href="{% url 'starting-page' %}" class="error-btn">Tornar a l'inici</a>
+</section>
+{% endblock %}

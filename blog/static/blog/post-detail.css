@@ -1,0 +1,315 @@
+/* --- ESTILS ORIGINALS MANTINGUTS --- */
+
+#summary {
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 50rem;
+    text-align: center;
+}
+
+#summary h2 {
+    font-size: 2.5rem;
+    color: #3e0e56; /* El teu lila característic */
+    margin-bottom: 1rem; /* Reduït una mica per encabir l'autor */
+}
+
+#image-container {
+    width: 100%;
+    height: 25rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+}
+
+#image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#post-content {
+    width: 90%;
+    max-width: 40rem;
+    margin: 3rem auto;
+    line-height: 1.8;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.post-body {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    padding: 2.5rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenidor de codi (Python/JS) */
+.code-container {
+    background: #1e1e1e;
+    border-left: 4px solid #00d4ff;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    font-family: 'Courier New', monospace;
+    border-radius: 5px;
+    color: #dcdcdc;
+    overflow-x: auto;
+}
+
+.code-label {
+    color: #00d4ff;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* --- NOVES SECCIONS: AUTOR I TAGS --- */
+
+#post-meta {
+    margin-bottom: 1rem;
+    color: #a0a0a0;
+    font-size: 1.1rem;
+}
+
+#post-meta strong {
+    color: #00d4ff; /* El teu nom ressaltat en cian */
+}
+
+#tags-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.tag-badge {
+    background-color: transparent;
+    color: #00d4ff;
+    border: 1px solid #00d4ff;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+/* Efecte Hover per als Tags */
+.tag-badge:hover {
+    background-color: #00d4ff;
+    color: #1e1e1e;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+    cursor: pointer;
+}
+
+/* Botó de tornar enrere */
+.back-link-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #a0a0a0;
+    font-weight: bold;
+    border: 1px solid #a0a0a0;
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.back-link:hover {
+    color: white;
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tag-badge {
+    text-decoration: none; /* Treu la ratlla de sota de l'enllaç */
+    display: inline-block;
+    /* ... la resta del teu estil (colors, padding, etc.) es manté igual */
+}
+
+.tag-badge:hover {
+    filter: brightness(1.2); /* Fa que brilli una mica en passar el ratolí */
+    cursor: pointer;
+}
+
+
+/* Contenidor del formulari */
+#comment-form {
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px; /* Perquè no s'estiri massa en pantalles grans */
+}
+
+#comment-form h2 {
+    color: #00d4ff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+/* Cada bloc d'etiqueta + input */
+.form-control {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+/* Estil per als inputs i el textarea */
+.form-control input,
+.form-control textarea {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #252525;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control textarea {
+    height: 100px;
+    resize: vertical; /* Permet estirar cap avall però no cap als costats */
+}
+
+/* Efecte focus quan cliques per escriure */
+.form-control input:focus,
+.form-control textarea:focus {
+    outline: none;
+    border-color: #00d4ff;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
+}
+
+/* Estil per al botó */
+#comment-form button {
+    background-color: #00d4ff;
+    color: #1e1e1e;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%; 
+    transition: transform 0.2s, background-color 0.3s;
+    margin-top: 1rem;
+}
+
+#comment-form button:hover {
+    background-color: #00a3c4;
+    transform: translateY(-2px);
+}
+
+#comment-form button:active {
+    transform: translateY(0);
+}
+
+/* Estil per als errors de validació */
+.form-control ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.3rem 0 0;
+    color: #ff4d4d;
+    font-size: 0.85rem;
+}
+
+#comments {
+    margin: 3rem auto;
+    max-width: 600px;
+}
+
+#comments h2 {
+    color: #e0e0e0;
+    border-bottom: 2px solid #00d4ff;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+#comments ul {
+    list-style: none;
+    padding: 0;
+}
+
+#comments li {
+    background: #252525;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #00d4ff;
+}
+
+.comment-header {
+    margin-bottom: 0.5rem;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #00d4ff;
+    font-size: 1.1rem;
+}
+
+.comment-text {
+    color: #cccccc;
+    line-height: 1.5;
+    margin: 0;
+}
+/* Contenidor del botó */
+#read-later {
+    margin: 2rem 0;
+    text-align: right; /* El posem a la dreta, molt estil blog modern */
+}
+
+/* Estil base del botó */
+#read-later button {
+    background-color: transparent;
+    color: #00d4ff;
+    border: 2px solid #00d4ff;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Efecte quan passes el ratolí (Hover) */
+#read-later button:hover {
+    background-color: #00d4ff;
+    color: #1a1a1a;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Quan el post JA està guardat (per si vols un color diferent) */
+#read-later button.is-saved {
+    background-color: #ff4d4d;
+    border-color: #ff4d4d;
+    color: white;
+}
+
+#read-later button.is-saved:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+}
+

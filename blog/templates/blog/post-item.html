@@ -1,0 +1,23 @@
+{% load static %}
+
+<li>
+  <article class="post">
+    <a href="{% url 'post-detail-page' post.slug %}">
+      <div class="post__image">
+        <img src="{% static 'blog/images/' %}{{ post.image_name }}" alt="{{ post.title }}">      </div>
+        <div class="post-item-content">
+    <ul class="post-tags">
+        {% for tag in post.tags.all %}
+            <li class="tag-badge">{{ tag.caption }}</li>
+        {% endfor %}
+    </ul>
+</div>
+      <div class="post__content">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+      </div>
+
+      
+    </a>
+  </article>
+</li>

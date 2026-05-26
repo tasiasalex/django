@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block title %}Els meus posts guardats{% endblock %}
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static 'blog/all-posts.css' %}">
+  <link rel="stylesheet" href="{% static 'blog/base.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="all-posts"> <h1>Els meus posts guardats</h1>
+    
+    {% if not has_posts %}
+        <p>No has guardat cap post encara.</p>
+    {% else %}
+        <ul>
+            {% for post in posts %}
+                {% include "blog/post-item.html" %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,282 @@
+[
+  {
+    "model": "blog.author",
+    "pk": 1,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email_address": "john@example.com"
+    }
+  },
+  {
+    "model": "blog.author",
+    "pk": 2,
+    "fields": {
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "email_address": "jane@example.com"
+    }
+  },
+  {
+    "model": "blog.author",
+    "pk": 3,
+    "fields": {
+      "first_name": "Alice",
+      "last_name": "Johnson",
+      "email_address": "alice@example.com"
+    }
+  },
+  {
+    "model": "blog.author",
+    "pk": 4,
+    "fields": {
+      "first_name": "Bob",
+      "last_name": "Brown",
+      "email_address": "bob@example.com"
+    }
+  },
+  {
+    "model": "blog.author",
+    "pk": 5,
+    "fields": {
+      "first_name": "Charlie",
+      "last_name": "Davis",
+      "email_address": "charlie@example.com"
+    }
+  },
+  {
+    "model": "blog.tag",
+    "pk": 1,
+    "fields": { "caption": "django" }
+  },
+  {
+    "model": "blog.tag",
+    "pk": 2,
+    "fields": { "caption": "python" }
+  },
+  {
+    "model": "blog.tag",
+    "pk": 3,
+    "fields": { "caption": "web" }
+  },
+  {
+    "model": "blog.tag",
+    "pk": 4,
+    "fields": { "caption": "programming" }
+  },
+  {
+    "model": "blog.tag",
+    "pk": 5,
+    "fields": { "caption": "tutorial" }
+  },
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Introducció a Django",
+      "excerpt": "Aprèn les bases del framework web més potent de Python.",
+      "image_name": "django-intro.jpg",
+      "date": "2024-05-24",
+      "slug": "introduccio-django",
+      "content": "Aquest post explica com configurar el teu primer projecte Django des de zero.",
+      "author": 1,
+      "tags": [1, 2]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "Mastering Python Lists",
+      "excerpt": "Tot el que necessites saber sobre les llistes en Python.",
+      "image_name": "python-lists.jpg",
+      "date": "2024-05-24",
+      "slug": "mastering-python-lists",
+      "content": "Les llistes són una de les estructures de dades més versàtils de Python. En aquest tutorial veurem mètodes avançats.",
+      "author": 2,
+      "tags": [2, 5]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "title": "Disseny Web Modern",
+      "excerpt": "Tendències de disseny per al 2024.",
+      "image_name": "web-design.jpg",
+      "date": "2024-05-24",
+      "slug": "disseny-web-modern",
+      "content": "El disseny web evoluciona ràpidament. Parlem de CSS Grid, Flexbox i dark mode.",
+      "author": 3,
+      "tags": [3]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+      "title": "Bones pràctiques de programació",
+      "excerpt": "Escriu codi net i fàcil de mantenir.",
+      "image_name": "clean-code.jpg",
+      "date": "2024-05-24",
+      "slug": "bones-practiques",
+      "content": "Clean code no és només una guia, és una filosofia per a qualsevol programador professional.",
+      "author": 4,
+      "tags": [4]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+      "title": "Tutorial de Git",
+      "excerpt": "Control de versions per a principiants.",
+      "image_name": "git-tutorial.jpg",
+      "date": "2024-05-24",
+      "slug": "tutorial-git",
+      "content": "Git és indispensable. Aprèn commit, push, pull i com gestionar branques.",
+      "author": 5,
+      "tags": [5, 4]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 6,
+    "fields": {
+      "title": "Django Rest Framework",
+      "excerpt": "Com crear APIs potents ràpidament.",
+      "image_name": "drf.jpg",
+      "date": "2024-05-24",
+      "slug": "django-rest-framework",
+      "content": "DRF és l'estàndard per crear APIs amb Django. Veurem els serializers i viewsets.",
+      "author": 1,
+      "tags": [1, 3]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 7,
+    "fields": {
+      "title": "Deep Learning amb Python",
+      "excerpt": "Una introducció a les xarxes neuronals.",
+      "image_name": "deep-learning.jpg",
+      "date": "2024-05-24",
+      "slug": "deep-learning-python",
+      "content": "Explorem com Python domina el camp de la Intel·ligència Artificial amb llibreries com PyTorch.",
+      "author": 2,
+      "tags": [2, 4]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 8,
+    "fields": {
+      "title": "Optimització de Bases de Dades",
+      "excerpt": "Fes que la teva aplicació voli.",
+      "image_name": "db-opt.jpg",
+      "date": "2024-05-24",
+      "slug": "optimitzacio-bbdd",
+      "content": "Indexes, query optimization i com evitar el problema N+1 a Django.",
+      "author": 3,
+      "tags": [1, 5]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 9,
+    "fields": {
+      "title": "Seguretat Web bàsica",
+      "excerpt": "Protegeix la teva app d'atacs comuns.",
+      "image_name": "security.jpg",
+      "date": "2024-05-24",
+      "slug": "seguretat-web",
+      "content": "XSS, SQL Injection i CSRF. Aprèn com Django et protegeix per defecte.",
+      "author": 4,
+      "tags": [3, 4]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 10,
+    "fields": {
+      "title": "Desplegament amb Docker",
+      "excerpt": "Contenidors per a un entorn estable.",
+      "image_name": "docker.jpg",
+      "date": "2024-05-24",
+      "slug": "desplegament-docker",
+      "content": "Docker permet que la teva aplicació funcioni igual a la teva màquina que al servidor.",
+      "author": 5,
+      "tags": [4, 5]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 11,
+    "fields": {
+      "title": "Testing a Django",
+      "excerpt": "Dorm tranquil amb tests automàtics.",
+      "image_name": "testing.jpg",
+      "date": "2024-05-24",
+      "slug": "testing-django",
+      "content": "Com escriure unit tests i integration tests per assegurar que res es trenca.",
+      "author": 1,
+      "tags": [1, 4]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 12,
+    "fields": {
+      "title": "Async Python",
+      "excerpt": "Aprofita el potencial de l'asincronia.",
+      "image_name": "async.jpg",
+      "date": "2024-05-24",
+      "slug": "async-python",
+      "content": "Asyncio i el futur de Python en entorns d'alta concurrència.",
+      "author": 2,
+      "tags": [2]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 13,
+    "fields": {
+      "title": "JavaScript per a Pythonistes",
+      "excerpt": "Frontend per a desenvolupadors de backend.",
+      "image_name": "js-py.jpg",
+      "date": "2024-05-24",
+      "slug": "js-per-pythonistes",
+      "content": "Conceptes clau de JS que tot desenvolupador de Django hauria de conèixer.",
+      "author": 3,
+      "tags": [3, 5]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 14,
+    "fields": {
+      "title": "Microserveis vs Monòlits",
+      "excerpt": "Quina arquitectura triar?",
+      "image_name": "architecture.jpg",
+      "date": "2024-05-24",
+      "slug": "arquitectura-software",
+      "content": "Anàlisi dels pros i contres de cada estructura segons la mida del projecte.",
+      "author": 4,
+      "tags": [4]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 15,
+    "fields": {
+      "title": "El futur de Django",
+      "excerpt": "Què ens espera a les properes versions?",
+      "image_name": "django-future.jpg",
+      "date": "2024-05-24",
+      "slug": "futur-django",
+      "content": "Noves funcionalitats i la direcció de la comunitat cap a un web més ràpid.",
+      "author": 5,
+      "tags": [1, 2]
+    }
+  }
+]   
