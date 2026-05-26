@@ -1,25 +1,30 @@
-{% extends "blog/base.html" %}
-{% load static %}
+{% extends "blog/base.html" %} {% load static %}
 
 {% block title %}Pàgina no trobada{% endblock %}
 
 {% block css_files %}
 <style>
+    /* Contenidor central de l'error */
     .error-container {
         text-align: center;
         padding: 5rem 1rem;
         color: white;
     }
+
+    /* El número 404 en gran i amb brillantor blau cian */
     .error-container h1 {
         font-size: 8rem;
         margin: 0;
         color: #00d4ff;
         text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
     }
+
     .error-container h2 {
         font-size: 2rem;
         margin-bottom: 2rem;
     }
+
+    /* Botó per tornar a la pàgina principal si l'usuari es perd */
     .error-btn {
         display: inline-block;
         text-decoration: none;
@@ -31,6 +36,8 @@
         font-weight: bold;
         transition: all 0.3s;
     }
+
+    /* Efecte hover per al botó d'error */
     .error-btn:hover {
         background: #00d4ff;
         color: #121212;
@@ -44,7 +51,9 @@
     <h1>404</h1>
     <h2>Ups! Aquest post s'ha perdut en el codi...</h2>
     <p>La pàgina que busques no existeix o ha estat moguda.</p>
+    
     <br><br>
+    
     <a href="{% url 'starting-page' %}" class="error-btn">Tornar a l'inici</a>
 </section>
 {% endblock %}
