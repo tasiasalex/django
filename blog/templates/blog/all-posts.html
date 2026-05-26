@@ -1,3 +1,4 @@
+{# Heretem l'estructura general del fitxer base.html per no repetir la navbar i el footer #}
 {% extends "blog/base.html" %}
 {% load static %}
 
@@ -6,6 +7,7 @@
 {% endblock %}
 
 {% block css_files %}
+  {# Enllacem els estils específics d'aquesta pàgina i el disseny de les targetes individuals #}
   <link rel="stylesheet" href="{% static 'blog/all-posts.css' %}">
   <link rel="stylesheet" href="{% static 'blog/post-item.css' %}">
 {% endblock %}
@@ -13,6 +15,7 @@
 {% block content %}
 <section id="all-posts">
   <h2>
+    {# Lògica condicional: si l'usuari ha filtrat per tag, mostrem el nom; si no, el títol per defecte #}
     {% if tag_name %}
       Posts sobre: {{ tag_name }}
     {% else %}
@@ -20,13 +23,16 @@
     {% endif %}
   </h2>
 
+  {# Secció de navegació per categories (tags) #}
   <nav id="filter-navigation">
     <p>Filtra per categoria:</p>
     <div class="filter-tags">
+      {# Botó per mostrar tots els posts (sense cap filtre actiu) #}
       <a href="{% url 'posts-page' %}" class="filter-btn {% if not tag_name %}active{% endif %}">
         Tots
       </a>
       
+      {# Bucle per generar un botó de filtre per a cada etiqueta que tenim a la base de dades #}
       {% for tag in all_tags %}
         <a href="{% url 'posts-by-tag' tag.caption %}" 
            class="filter-btn {% if tag.caption == tag_name %}active{% endif %}">
@@ -39,14 +45,18 @@
   <hr>
 
   <ul>
+    {# Recorrem la llista de posts que ens ha passat la vista de Django #}
     {% for post in all_posts %}
+      {# Fem servir 'include' per carregar el component de la targeta (reutilització de codi) #}
       {% include "blog/post-item.html" %}
     {% empty %}
+      {# Si la llista està buida (per exemple, un tag sense posts), mostrem aquest missatge #}
       <p>No s'ha trobat cap post amb aquesta etiqueta.</p>
     {% endfor %}
   </ul>
 </section>
 
+{# Enllaç de retorn a la pàgina d'inici fent servir el nom de la ruta #}
 <div class="back-home">
     <a href="{% url 'starting-page' %}">Torna a l'inici</a>
 </div>
