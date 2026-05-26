@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
+from django.views.generic import ListView, DetailView
 
-from .models import Post, Tag
+from .models import Post, Tag, Author
 from .forms import CommentForm
 
 # Pàgina d'inici: només vull ensenyar els 3 posts més nous
@@ -99,3 +100,19 @@ class ReadLaterView(View):
         # Torno a la pàgina del post on estava l'usuari
         post = get_object_or_404(Post, id=post_id)
         return HttpResponseRedirect(reverse("post-detail-page", args=[post.slug]))
+
+class AuthorListView(ListView):
+    template_name = "blog/authors-list.html"
+    model = Author
+    context_object_name = "authors"
+
+# També necessitaràs aquesta per al detall
+class AuthorDetailView(DetailView):
+    template_name = "blog/author-detail.html"
+    model = Author
+    context_object_name = "author"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["author_posts"] = self.object.post_set.all()
+        return context
