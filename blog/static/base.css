@@ -1,35 +1,41 @@
+/* Estils generals del cos de la web */
 body {
-    background-color: #0b0e14; /* Fons fosc tipus RPG */
+    background-color: #0b0e14; /* Fons molt fosc per donar un aire de videojoc/RPG */
     color: #e0e0e0;
     font-family: 'Segoe UI', sans-serif;
-    margin: 0;
+    margin: 0; /* Trec els marges per defecte del navegador */
 }
 
+/* Barra de navegació principal */
 #main-navigation {
     width: 100%;
     height: 5rem;
+    /* Gradient lila que va amb l'estètica del blog */
     background: linear-gradient(90deg, #1a0b2e 0%, #3e0e56 100%);
-    border-bottom: 2px solid #00d4ff; /* Línia blau "Mako" */
+    border-bottom: 2px solid #00d4ff; /* Línia blau cian per ressaltar */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
+    /* El border-box serveix perquè el padding no faci la barra més gran del 100% */
     box-sizing: border-box;
     box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
 }
 
+/* Estil del logotip del blog */
 .logo a {
     color: white;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
-    text-shadow: 0 0 10px #00d4ff;
+    text-shadow: 0 0 10px #00d4ff; /* Efecte de brillantor al text */
 }
 
 .logo span {
-    color: #a076ff;
+    color: #a076ff; /* Color diferent per a una part del logo */
 }
 
+/* Menú de la dreta (Llista de links) */
 #main-navigation ul {
     list-style: none;
     display: flex;
@@ -45,19 +51,21 @@ body {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: uppercase; /* Forço les majúscules per als links del menú */
     transition: 0.3s;
 }
 
+/* Efecte en passar el ratolí pels links del menú */
 #main-navigation a:hover {
     color: #00d4ff;
     text-shadow: 0 0 8px #00d4ff;
 }
 
-/* Això farà que qualsevol imatge dins d'una llista de posts es vegi bé */
+/* Configuració de les imatges de les llistes (prevenció de deformacions) */
 .post img {
     width: 100%;
-    height: 200px; /* Alçada fixa per a la llista */
-    object-fit: cover; /* Aquesta línia és màgica: retalla la foto perquè no es deformi */
+    height: 200px; /* Alçada fixa per mantenir la graella alineada */
+    /* El object-fit: cover fa que la imatge s'adapti al quadrat sense aixafar-se */
+    object-fit: cover; 
     display: block;
 }
